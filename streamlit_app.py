@@ -105,10 +105,15 @@ class Interface():
       else:
         Welcome_Page.welcome()
         # It deletes Preprocessing and initial datasets from the last run
+        # Also the old report files just in case
         if os.path.isfile("Smoothing_and_Filtering//Preprocessing dataset.csv"):
            os.remove("Smoothing_and_Filtering//Preprocessing dataset.csv")
         if os.path.isfile("Smoothing_and_Filtering//initial.csv"):
            os.remove("Smoothing_and_Filtering//initial.csv")
+        if os.path.isfile("Data_Preview//Report.html"):
+           os.remove("Data_Preview//Report.html")
+        if os.path.isfile("Data_Preview//Report.json"):
+           os.remove("Data_Preview//Report.json")
 
 def main():
   """
