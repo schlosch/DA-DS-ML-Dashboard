@@ -80,6 +80,7 @@ def doubleLinePlot(initdf, dataframe, column):
     fig = plt.figure(figsize=(10, 4))
     sns.lineplot(y = column, x = [i for i in range(len(initdf[column]))], data = initdf)
     sns.lineplot(y = column, x = [i for i in range(len(dataframe[column]))], data = dataframe)
+    plt.legend(["Original","Smoothed"])
     st.pyplot(fig)
 
 # Data Preparation: Interpolation

@@ -18,6 +18,7 @@ import Data_Preparation
 import Smoothing_and_Filtering
 import Regression
 import Classification
+import Auto_ML
 
 # Data object class
 class DataObject():
@@ -69,7 +70,7 @@ class Interface():
       
         # Side bar navigation menu with a select box
         menu = ['Welcome Page','Data Preview', 'Data Preparation', 'Smoothing and filtering',
-                                                 'Classification', 'Regression']
+                                                 'Classification', 'Regression', 'Auto ML']
         navigation = st.sidebar.selectbox(label="Select menu", options=menu)
 
         # Apps
@@ -100,6 +101,9 @@ class Interface():
         # Runs 'Regression' app
         if navigation == 'Regression':
           Regression.regression(dt_obj)
+
+        if navigation == 'Auto ML':
+          Auto_ML.auto_ml(dt_obj)
       
       # Initial welcome page when there is no file selected
       else:
@@ -114,6 +118,7 @@ class Interface():
            os.remove("Data_Preview//Report.html")
         if os.path.isfile("Data_Preview//Report.json"):
            os.remove("Data_Preview//Report.json")
+        st.experimental_memo.clear()
 
 def main():
   """

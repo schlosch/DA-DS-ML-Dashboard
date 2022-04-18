@@ -398,7 +398,7 @@ def main(data_obj):
                 
                 # If not time-series compatible dataset
                 except KeyError or ValueError or IndexError as e:  
-                        st.warning("Selected dataframe is not appropriate for this method, please upload a different one")
+                        st.warning("Selected dataframe is not appropriate for this method, please upload a one with a time column")
                         st.stop()
                 except  ValueError as ev:  
                         st.warning("Please select different column of interest")
@@ -625,7 +625,7 @@ def main(data_obj):
 
     # Unfinalized changes tracker
     else:
-        st.sidebar.error("You have unsaved changes")
+        st.sidebar.error("You have unsaved global changes")
 
 # Main
 if __name__ == "__main__":

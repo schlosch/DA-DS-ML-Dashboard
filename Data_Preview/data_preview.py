@@ -49,7 +49,7 @@ def main(data_obj):
 
     ## Report main body
     ### Generating and caching the report
-    @st.cache
+    @st.experimental_memo
     def generate_report():
         report = pp.ProfileReport(data_obj.df)
         report_html = report.to_html()

@@ -6,8 +6,8 @@ import streamlit as st
 
 class Classification:
     """
-    This Class is used to build one of three
-    possible classifiers (KNN,LR,SVM) with a givin dataset.
+    This Class is used to build one of the three
+    possible classifiers (KNN,LR,SVM) with a given dataset.
     """
 
     def __init__(self, dataframe, column_names=[]):
@@ -35,7 +35,7 @@ class Classification:
             # st.write("No column names were given")
             pass
         else:
-            raise Exception("Number of column names dont match with number of columns!")
+            raise Exception("Number of column names don't match with number of columns!")
 
     def __del__(self):
         pass

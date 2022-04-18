@@ -6,6 +6,30 @@ import os #to work with files
 from streamlit_autorefresh import st_autorefresh #library for autorefresher https://libraries.io/pypi/streamlit-autorefresh
 
 
+# def import_dset(data_obj):
+#     """Checking if the processed dataset already exist, then current dataframe will be equal to that. 
+#        If it's not, initial dataframe will be generated into initial.csv file, and current dataframe will be equal to initial.
+
+#     :param data_obj: DataObject instance
+#     :type data_obj: __main__.DataObject
+#     :return: pandas dataframe object
+#     :rtype: pandas.core.frame.DataFrame
+#     """
+
+#     try:
+#         a = pd.read_csv('Smoothing_and_Filtering//Filtered Dataset.csv', index_col = None)
+#         if a.equals(data_obj.df) == False:
+#             current_df = a
+#         else:
+#             current_df = data_obj.df
+#             current_df.to_csv("Smoothing_and_Filtering//initial.csv", index=False)
+#     except:
+#         current_df = data_obj.df
+#         current_df.to_csv("Smoothing_and_Filtering//initial.csv", index=False)
+
+#     return current_df
+
+
 def import_dset(data_obj):
     """Checking if the processed dataset already exist, then current dataframe will be equal to that. 
        If it's not, initial dataframe will be generated into initial.csv file, and current dataframe will be equal to initial.
@@ -22,13 +46,10 @@ def import_dset(data_obj):
             current_df = a
         else:
             current_df = data_obj.df
-            current_df.to_csv("Smoothing_and_Filtering//initial.csv", index=False)
     except:
         current_df = data_obj.df
-        current_df.to_csv("Smoothing_and_Filtering//initial.csv", index=False)
 
     return current_df
-
 
 def main(data_obj):
     """Data Preparation main
@@ -43,14 +64,15 @@ def main(data_obj):
                Here you can rename and/or drop columns.
                \nA field "Column to delete" is a multi-selector. You can choose more than one column to delete at once. 
                \nDon't forget to press 'Submit' each time to apply changes!
+               \nYou can always reset your dataframe to the original one using the button on the sidebar.
             """)
 
-    # Dataframe assignement from data object
+    # Dataframe assignment from data object
     current_df = import_dset(data_obj)
 
     # Reset dataframe 
     if st.sidebar.button("Reset dataframe to the initial one"):
-        current_df = pd.read_csv('Smoothing_and_Filtering//initial.csv', index_col = None)
+        current_df = data_obj.df
         # Check if file exists and remove it if it does
         if os.path.isfile("Smoothing_and_Filtering//Filtered Dataset.csv"):
             os.remove("Smoothing_and_Filtering//Filtered Dataset.csv")
@@ -61,7 +83,7 @@ def main(data_obj):
     # Display current dataframe
     with cc1:
         st.write("Dataframe display:")
-        st.write(current_df)
+        st.write(current_df.head(5))
     # The form for renaming columns       
     with cc2:
         st.write(" ")
