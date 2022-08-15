@@ -1,7 +1,7 @@
 # Data Analytics Dashboard using Streamlit
 
 You find yourselves in the app for Data Analytics Dashboard developed by
-the students of MAIT 21/22 program of TH Köln.
+the students of MAIT 21/22 program of the Cologne University of Applied Sciences.
 
 It allows you to:
 
